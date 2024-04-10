@@ -1,0 +1,30 @@
+[package]
+name = "bilibili_sdk"
+version = "0.1.0"
+edition = "2021"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+authors = ["gaoyia <gaoyia@qq.com>"]
+repository = "https://github.com/gaoyia/bilibili_sdk"
+description = "三方 bilibili sdk"
+documentation = "https://docs.rs/bilibili_sdk"
+[[example]]
+name = "hello_world"
+path = "examples/hello_world/src/main.rs"
+
+[[example]]
+name = "ws_serialize"
+path = "examples/ws_serialize/src/main.rs"
+
+[dependencies]
+ring = "0.17"
+reqwest ={ version = "0.12", features = ["json"] }
+hex = "0.4"
+uuid = { version = "1", features = ["v4"] }
+md5 = "0.7"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0" }
+
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }
