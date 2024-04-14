@@ -87,13 +87,15 @@ mod ws_msg;
 pub use pack::{Proto, Operation, num_2_operation};
 pub use res_msg::{ResponseData, Data, GameInfo, WebsocketInfo, AnchorInfo};
 pub use ws_msg::{LiveEventData, DM,SendGift, SuperChat, SuperChatDelete, Guard, Like, ComboInfo,LiveCmd,MatchedData,msg_parser};
+
+#[derive(Debug)]
 pub struct BilibiliSDK {
     access_key_id: String,
     access_secret_key: String,
     base_url: String,
 }
 
-#[derive(Default)]
+#[derive(Default,Debug)]
 pub struct Config {
     pub access_key_id: String,
     pub access_secret_key: String,

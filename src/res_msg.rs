@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 // 定义整个响应数据的结构体
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct ResponseData {
     pub code: i32,
     pub message: String,
@@ -11,7 +11,7 @@ pub struct ResponseData {
 }
 
 // 定义包含场次信息的结构体
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Data {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub failed_game_ids: Option<Vec<String>>,
@@ -24,20 +24,20 @@ pub struct Data {
 }
 
 // 定义场次信息的结构体
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GameInfo {
     pub game_id: String,
 }
 
 // 定义长连信息的结构体
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct WebsocketInfo {
     pub auth_body: String,
     pub wss_link: Vec<String>,
 }
 
 // 定义主播信息的结构体
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AnchorInfo {
     pub room_id: u64,
     pub uname: String,

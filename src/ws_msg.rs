@@ -1,7 +1,7 @@
 use serde::{ Deserialize, Serialize};
 use serde_json::Value;
 use crate::AnchorInfo;
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum LiveCmd {
     LiveOpenPlatformDm,
@@ -12,7 +12,7 @@ pub enum LiveCmd {
     LiveOpenPlatformLike,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 // #[serde(untagged)]
 pub enum MatchedData {
     DM(DM),
@@ -24,14 +24,14 @@ pub enum MatchedData {
 }
 
 // 顶层结构体，包含cmd和data
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct LiveEventData {
     pub cmd: LiveCmd,
     pub data: Value, // 根据cmd对应的数据
 }
 
 // 弹幕接收事件
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct DM {
     pub room_id: u64, // 直播间ID
     pub open_id: String, // 用户唯一标识
@@ -49,7 +49,7 @@ pub struct DM {
 }
 
 // 送礼物事件
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SendGift {
     pub room_id: u64, // 直播间ID
     pub open_id: String, // 用户唯一标识
@@ -71,7 +71,7 @@ pub struct SendGift {
 }
 
 // 超级聊天事件
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SuperChat {
     pub room_id: u64, // 直播间ID
     pub open_id: String, // 购买用户唯一标识
@@ -89,14 +89,14 @@ pub struct SuperChat {
 }
 
 // 超级聊天删除事件
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SuperChatDelete {
     pub room_id: u64, // 直播间ID
     pub message_ids: Vec<u64>, // 留言ID列表
 }
 
 // 大航海事件
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Guard {
     pub user_info: UserInfo, // 用户信息
     pub guard_level: u8, // 对应的大航海等级
@@ -112,7 +112,7 @@ pub struct Guard {
 }
 
 // 点赞事件
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Like {
     pub uname: String, // 主播昵称
     pub open_id: String, // 用户唯一标识
@@ -125,7 +125,7 @@ pub struct Like {
 }
 
 // 用户信息
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct UserInfo {
     pub open_id: String, // 用户唯一标识
     pub uname: String, // 用户昵称
@@ -133,7 +133,7 @@ pub struct UserInfo {
 }
 
 // 连击信息
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ComboInfo {
     pub combo_base_num: u64, // 每次连击赠送的道具数量
     pub combo_count: u64, // 连击次数
